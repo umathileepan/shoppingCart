@@ -34,7 +34,7 @@ let basket = [];
 
 let generateShop = () => {
     return (shop.innerHTML = shopItemData.map((x)=>{
-        let {id,name,price,desc,img} = x
+        let {id,name,price,desc,img} = x;
         return `
         <div  id = product-id-${id} class="item">
             <img width="220" src=${img} alt="" />
@@ -50,8 +50,10 @@ let generateShop = () => {
                 </div>
               </div>
             </div>
-          </div> `
-    }).join(""));
+          </div>
+         `;
+    })
+    .join(""));
 };
 
 generateShop();
@@ -66,9 +68,9 @@ let increment = (id) => {
       item: 1,
     });
   }
-  else
+  else{
     search.item += 1;
-  
+  }
   
   //console.log(basket)
   update(selectedItem.id);
@@ -84,10 +86,10 @@ let decrement = (id) => {
   }
   
   //console.log(basket)
-  update();
+  update(selectedItem.id);
 };
 let update = (id) => {
-  let search = basket.find((x)=> x.id === id)
-  console.log(search.item)
+  let search = basket.find((x) => x.id === id);
+  console.log(search.item);
   document.getElementById(id).innerHTML = search.item;
 };
